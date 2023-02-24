@@ -10,7 +10,7 @@ for i in range(n):
     length: int = s.__len__()
     flag: bool = True
     for i in range(length // 2):
-        if(s[i] != s[length -1 - i]):
+        if(s[i] != s[-1 - i]):
             flag = False
     
     if(flag == True):print("Y")
