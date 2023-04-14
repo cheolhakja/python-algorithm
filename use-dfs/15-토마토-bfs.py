@@ -22,23 +22,26 @@ if __name__ == "__main__":
                 
     while Q:
         tmp = Q.popleft()
-        for i in range(4):           
+        for i in range(4): 
+                    
             x = tmp[0] + dx[i]
             y = tmp[1] + dy[i]
-            t[x][y] = 1
-            dis[x][y] = dis[tmp[0]][tmp[1]] + 1
-            Q.append((x,y))
-                #if 인접한 토마토가 존재하고, 토마토가 사각형 범위안에 있고, 아직 안익었으면
-                #   그 토마토를 익게하고
-                #   그 토마토를 queue에 넣고
-                #   queue_num을 +=1
-                #   전체 안익은 토마토의 갯수를 +=1 해준다
+            if(  0<=x<n and 0<=y<m and t[x][y] == 0):
+
+                t[x][y] = 1
+                dis[x][y] = dis[tmp[0]][tmp[1]] + 1
+                Q.append((x,y))
+                    #if 인접한 토마토가 존재하고, 토마토가 사각형 범위안에 있고, 아직 안익었으면
+                    #   그 토마토를 익게하고
+                    #   그 토마토를 queue에 넣고
+                    #   queue_num을 +=1
+                    #   전체 안익은 토마토의 갯수를 +=1 해준다
 
     max_num = -2147000
     for i in range(n):
         for j in range(m):
-            if t[i][j] > max_num:
-                max_num = t[i][j]
+            if dis[i][j] > max_num:
+                max_num = dis[i][j]
     print(max_num)
        
     
